@@ -79,7 +79,6 @@ Using these free or trial options can help you add an AI chatbot or similar func
 ## Deliverables
 
 - **Forked Repository**: Contains all changes, with commits reflecting your development process.
-- **Pull Request (Optional)**: A clear, well-described PR to the main repository, showing how you integrated the new features.
 
 ---
 
