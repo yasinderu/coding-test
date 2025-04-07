@@ -56,7 +56,7 @@ Using these free or trial options can help you add an AI chatbot or similar func
 
 ---
 
-## Submission Instructions (Fork & Pull Request)
+## Submission Instructions (Fork)
 
 1. **Fork This Repository**  
    - In the top-right corner of this repo page, click on the “Fork” button to create your own copy of the project under your GitHub account.
@@ -70,13 +70,9 @@ Using these free or trial options can help you add an AI chatbot or similar func
    - Work on your solution locally (both frontend and backend as described below).  
    - Commit your changes in a clean, organized manner.
 
-4. **Push Changes & Create a Pull Request**  
-   - Once you finish your changes, push them to your forked repository:
-     ```bash
-     git push origin main
-     ```
-   - Then, go to your forked repository on GitHub and Provide a link to your forked repository and emailing it to us
-   - Provide a clear description of what you’ve implemented or any notable design choices.
+
+- Then, go to your forked repository on GitHub and Provide a link to your forked repository and emailing it to us
+- Provide a clear description of what you’ve implemented or any notable design choices.
 
 ---
 
