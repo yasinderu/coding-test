@@ -1,16 +1,29 @@
 import { useState, useEffect } from "react";
 
+import SalesPerformance from "../components/SalesPerformance";
+import Overview from "../components/Overview";
+import Charts from "../components/Charts";
+import AI from "../components/AI";
+
+import styles from "../styles/Styles.module.css";
+
 export default function Home() {
-  const [users, setUsers] = useState([]);
+  const [salesReps, setSalesReps] = useState([]);
+  const [totalSales, setTotalSales] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
+  const [clientDealsLoading, setClientDealsLoading] = useState(true);
+  const [clientDeals, setClientDeals] = useState([]);
+  const [deals, setDeals] = useState({});
+  const [dealsLoading, setDealsLoading] = useState(true);
+  const [regionalDeals, setRegionalDeals] = useState([]);
+  const [regionalDealsLoading, setRegionalDealsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/data")
+    fetch("http://localhost:8000/api/sales-reps?sort=desc")
       .then((res) => res.json())
       .then((data) => {
-        setUsers(data.users || []);
+        setSalesReps(data.data || []);
+        setTotalSales(data.total_sales);
         setLoading(false);
       })
       .catch((err) => {
@@ -19,56 +32,61 @@ export default function Home() {
       });
   }, []);
 
-  const handleAskQuestion = async () => {
-    try {
-      const response = await fetch("http://localhost:8000/api/ai", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question }),
+  useEffect(() => {
+    fetch("http://localhost:8000/api/top-clients?sort=desc")
+      .then((res) => res.json())
+      .then((data) => {
+        setClientDeals(data || []);
+        setClientDealsLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch data:", err);
+        setClientDealsLoading(false);
       });
-      const data = await response.json();
-      setAnswer(data.answer);
-    } catch (error) {
-      console.error("Error in AI request:", error);
-    }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/api/deals")
+      .then((res) => res.json())
+      .then((data) => {
+        setDeals(data || {});
+        setDealsLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch data:", err);
+        setDealsLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/api/regional-deals")
+      .then((res) => res.json())
+      .then((data) => {
+        setRegionalDeals(data || {});
+        setRegionalDealsLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch data:", err);
+        setRegionalDealsLoading(false);
+      });
+  }, []);
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Next.js + FastAPI Sample</h1>
-
-      <section style={{ marginBottom: "2rem" }}>
-        <h2>Dummy Data</h2>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <ul>
-            {users.map((user) => (
-              <li key={user.id}>
-                {user.name} - {user.role}
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-
-      <section>
-        <h2>Ask a Question (AI Endpoint)</h2>
-        <div>
-          <input
-            type="text"
-            placeholder="Enter your question..."
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
+    <div className={styles.dashboard}>
+      {loading || dealsLoading || clientDealsLoading || regionalDealsLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <main className={styles.mainContent}>
+          <Overview
+            salesReps={salesReps}
+            dealsSummary={deals.summary}
+            totalSales={totalSales}
           />
-          <button onClick={handleAskQuestion}>Ask</button>
-        </div>
-        {answer && (
-          <div style={{ marginTop: "1rem" }}>
-            <strong>AI Response:</strong> {answer}
-          </div>
-        )}
-      </section>
+          <SalesPerformance salesReps={salesReps} />
+          <Charts regionalDeals={regionalDeals} clientDeals={clientDeals} />
+          <AI />
+        </main>
+      )}
     </div>
   );
 }

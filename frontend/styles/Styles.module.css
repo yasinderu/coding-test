@@ -1,0 +1,136 @@
+/* === Layout === */
+.dashboard {
+  display: flex;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  min-height: 100vh;
+}
+
+/* === Main Content === */
+.mainContent {
+  flex-grow: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* === Cards === */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+.card p {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+/* === Table === */
+.tableContainer {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  text-align: left;
+  padding: 12px;
+}
+
+.table th {
+  background-color: #f1f5f9;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+/* === Skill Tags === */
+.skillTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skillTags span {
+  background-color: #e2e8f0;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+/* === Charts === */
+.flexSection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.chartBox {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  flex: 1;
+  min-height: 300px;
+}
+
+.formContainer {
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+  margin: 20px auto;
+  border: 1px solid #d1d5db; /* Tailwind gray-300 */
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.formInput {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+}
+
+.formButton {
+  padding: 10px 16px;
+  background-color: #2563eb; /* Tailwind blue-600 */
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.formButton:hover {
+  background-color: #1e40af; /* Tailwind blue-800 */
+}
