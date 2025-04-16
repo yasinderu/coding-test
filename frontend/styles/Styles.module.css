@@ -1,4 +1,3 @@
-/* === Layout === */
 .dashboard {
   display: flex;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -6,7 +5,6 @@
   min-height: 100vh;
 }
 
-/* === Main Content === */
 .mainContent {
   flex-grow: 1;
   padding: 2rem;
@@ -15,7 +13,6 @@
   gap: 2rem;
 }
 
-/* === Cards === */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -42,7 +39,6 @@
   margin-top: 0.5rem;
 }
 
-/* === Table === */
 .tableContainer {
   background-color: white;
   border-radius: 12px;
@@ -71,7 +67,6 @@
   background-color: #f9fafb;
 }
 
-/* === Skill Tags === */
 .skillTags {
   display: flex;
   flex-wrap: wrap;
@@ -85,7 +80,6 @@
   font-size: 0.8rem;
 }
 
-/* === Charts === */
 .flexSection {
   display: flex;
   flex-wrap: wrap;
@@ -106,7 +100,7 @@
   align-items: center;
   max-width: 400px;
   margin: 20px auto;
-  border: 1px solid #d1d5db; /* Tailwind gray-300 */
+  border: 1px solid #d1d5db;
   border-radius: 8px;
   overflow: hidden;
   background-color: white;
@@ -123,7 +117,7 @@
 
 .formButton {
   padding: 10px 16px;
-  background-color: #2563eb; /* Tailwind blue-600 */
+  background-color: #2563eb;
   color: white;
   font-size: 16px;
   border: none;
@@ -132,5 +126,5 @@
 }
 
 .formButton:hover {
-  background-color: #1e40af; /* Tailwind blue-800 */
+  background-color: #1e40af;
 }
