@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import SalesPerformance from "./SalesPerformance"; // Adjust path if needed
+import SalesPerformance from "./SalesPerformance";
 import "@testing-library/jest-dom";
 
 describe("SalesPerformance component", () => {
@@ -28,7 +28,6 @@ describe("SalesPerformance component", () => {
 
     expect(screen.getByText("Sales Rep Performance")).toBeInTheDocument();
 
-    // Check headers
     expect(screen.getByText("Name")).toBeInTheDocument();
     expect(screen.getByText("Role")).toBeInTheDocument();
     expect(screen.getByText("Region")).toBeInTheDocument();
@@ -36,11 +35,10 @@ describe("SalesPerformance component", () => {
     expect(screen.getByText("Closed Won & In Progress")).toBeInTheDocument();
     expect(screen.getByText("Skills")).toBeInTheDocument();
 
-    // Check sales rep row values
     expect(screen.getByText("Alice")).toBeInTheDocument();
     expect(screen.getByText("Senior Sales Rep")).toBeInTheDocument();
     expect(screen.getByText("West")).toBeInTheDocument();
-    expect(screen.getByText("3")).toBeInTheDocument(); // deals.length
+    expect(screen.getByText("3")).toBeInTheDocument();
     expect(screen.getByText("$50000")).toBeInTheDocument();
     expect(screen.getByText("Negotiation")).toBeInTheDocument();
     expect(screen.getByText("CRM")).toBeInTheDocument();
@@ -49,7 +47,7 @@ describe("SalesPerformance component", () => {
     expect(screen.getByText("Bob")).toBeInTheDocument();
     expect(screen.getByText("Junior Sales Rep")).toBeInTheDocument();
     expect(screen.getByText("East")).toBeInTheDocument();
-    expect(screen.getByText("1")).toBeInTheDocument(); // deals.length
+    expect(screen.getByText("1")).toBeInTheDocument();
     expect(screen.getByText("$10000")).toBeInTheDocument();
     expect(screen.getByText("Communication")).toBeInTheDocument();
   });

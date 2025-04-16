@@ -18,7 +18,7 @@ describe("Overview component", () => {
     render(<Overview {...mockProps} />);
 
     expect(screen.getByText("Total Sales Reps")).toBeInTheDocument();
-    expect(screen.getByText("2")).toBeInTheDocument(); // salesReps.length
+    expect(screen.getByText("2")).toBeInTheDocument();
 
     expect(
       screen.getByText("Total Deal Value (Closed Won & In Progress)")
@@ -31,6 +31,6 @@ describe("Overview component", () => {
     ).toBeInTheDocument();
 
     expect(screen.getByText("Top Performer")).toBeInTheDocument();
-    expect(screen.getByText("Alice")).toBeInTheDocument(); // salesReps[0].name
+    expect(screen.getByText("Alice")).toBeInTheDocument();
   });
 });

@@ -11,7 +11,7 @@ global.fetch = jest.fn(() =>
 
 describe("AI Component", () => {
   beforeEach(() => {
-    fetch.mockClear(); // Reset mock before each test
+    fetch.mockClear();
   });
 
   it("renders input and button", () => {
@@ -25,15 +25,12 @@ describe("AI Component", () => {
   it("sends a question and displays the response", async () => {
     render(<AI />);
 
-    // Type into the input
     const input = screen.getByPlaceholderText("Enter your question...");
     fireEvent.change(input, { target: { value: "What is AI?" } });
 
-    // Click the "Ask" button
     const button = screen.getByText("Ask");
     fireEvent.click(button);
 
-    // Wait for the response to appear
     await waitFor(() =>
       expect(screen.getByText(/AI Response:/)).toBeInTheDocument()
     );
@@ -42,7 +39,6 @@ describe("AI Component", () => {
       screen.getByText("This is a mocked AI response.")
     ).toBeInTheDocument();
 
-    // Assert fetch was called correctly
     expect(fetch).toHaveBeenCalledWith("http://localhost:8000/api/ai", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
